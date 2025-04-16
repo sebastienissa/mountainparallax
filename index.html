@@ -1,17 +1,7 @@
 <!-- This is a recreation of Unfold's (https://dribbble.com/unfold) parallax scene: https://cdn.dribbble.com/users/14268/screenshots/3275340/northface.gif -->
 <div class="scrollDist"></div>
 <main>
-  <!-- GSAP Core -->
-<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-
-<!-- ScrollTrigger Plugin -->
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-
-<!-- ScrollToPlugin (for smooth scroll on click) -->
-<script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
-
-  
-  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <mask id="m">
       <g class="cloud1">
         <rect fill="#fff" width="100%" height="801" y="799" />
@@ -19,11 +9,11 @@
       </g>
     </mask>
     
-    <image class="sky" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/sky.png?raw=true" width="1200"  />
-    <image class="mountBg" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/mountainsBG.png?raw=true" width="1200"/>    
-    <image class="mountFg" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/mountainsFG.png?raw=true" width="1200"/>    
-    <image class="hillsBG" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/hillsBG.png?raw=true" width="1200"/>
-    <image class="hillsMiddle" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/hillsMiddle.png?raw=true" width="1200"/>
+    <image class="sky" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/sky.webp?raw=true" width="1200"  />
+    <image class="mountBg" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/mountainsBG.webp?raw=true" width="1200"/>    
+    <image class="mountFg" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/mountainsFG.webp?raw=true" width="1200"/>    
+    <image class="hillsBG" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/hillsBG.webp?raw=true" width="1200"/>
+    <image class="hillsMiddle" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/hillsMiddle.webp?raw=true" width="1200"/>
     <image class="hillsFg" xlink:href="https://github.com/sebastienissa/mountainparallax/blob/main/HillsFG.webp?raw=true" width="1200"/>    
     
     <defs>
@@ -32,18 +22,19 @@
   </filter>
     </defs>
     
-    <text fill="#fff" x="350" y="200" filter="url(#textShadow)" >EXPLORE</text>
+    <text fill="#fff" x="50%" y="30%" text-anchor="middle" filter="url(#textShadow)" >EXPLORE</text>
     <polyline class="arrow" fill="#386641" points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" />
     
     <g mask="url(#m)">
       <rect fill="#fff" width="100%" height="100%" />      
-      <text x="50%" y="200" text-anchor="middle" fill="#386641">BIRCH CREEK</text>
+      <text x="50%" y="30%" text-anchor="middle" fill="#386641">BIRCH CREEK</text>
      </g>
     
-    <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="220" style="cursor:pointer"/>
+    <rect id="arrow-btn" filter="url(#textShadow)" width="100" height="100" opacity="0" x="50%" y="220" style="cursor:pointer"/>
   </svg>
 </main>
 
+<!-- CSS Starts Here --> 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
@@ -52,7 +43,7 @@ body, html {
   height:100%;
   background:#ffffff;
   font-family: 'Montserrat', sans-serif;
-  font-size:99px;
+  font-size:4vw;
   text-align:center;
 }
 
@@ -78,8 +69,8 @@ main {
 svg {
   display: block;
   width: 100vw;
+  height: 100vh;
 }
-  
 </style>
 
 <script>
@@ -97,7 +88,7 @@ gsap
     .fromTo('.hillsBG',     { y: 0 }, { y: -750 }, 0)
     .fromTo('.hillsMiddle', { y: -10 }, { y: -850 }, 0)
     .fromTo('.hillsFg',     { y: -10 }, { y: -950 }, 0)
-    .fromTo('.cloud1',      { y: 0 }, { y: -1050 }, 0);
+    .fromTo('.cloud1',      { y: 50 }, { y: -1050 }, 0);
 
 
 const arrowBtn = document.querySelector('#arrow-btn')
@@ -113,6 +104,5 @@ arrowBtn.addEventListener('mouseleave', ()=> {
 arrowBtn.addEventListener('click', ()=> {
   gsap.to(window, {scrollTo:innerHeight, duration:3.5, ease:'power1.inOut'})
 }) 
-  
 </script>
   
